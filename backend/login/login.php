@@ -1,5 +1,5 @@
 <?php
-    session_start();
+session_start();
 ?>
 <!DOCTYPE html>
 <html class="h-100" lang="en">
@@ -8,16 +8,16 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Quixlab - Bootstrap Admin Dashboard Template by Themefisher.com</title>
+    <title>Blog | Login</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/favicon.png">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <link href="../../assets/backend/css/style.css" rel="stylesheet">
-    
+
 </head>
 
 <body class="h-100">
-    
+
     <!--*******************
         Preloader start
     ********************-->
@@ -32,9 +32,6 @@
         Preloader end
     ********************-->
 
-    
-
-
 
     <div class="login-form-bg h-100">
         <div class="container h-100">
@@ -43,21 +40,30 @@
                     <div class="form-input-content">
                         <div class="card login-form mb-0">
                             <div class="card-body pt-5">
-                                
-                                    <a class="text-center" href="index.html"> <h4>Rosella</h4></a>
-        
-                                <form class="mt-5 mb-5 login-input" action="login.php" method="post">
+
+                                <a class="text-center" href="index.html">
+                                    <h4>Rosella</h4>
+                                </a>
+
+                                <form class="mt-5 mb-5 login-input" action="loginPost.php" method="post">
                                     <div class="form-group">
-                                        <input type="email" class="form-control"  placeholder="Email" required name="email">
+                                        <input type="email" class="form-control" placeholder="Email" required name="email">
+                                        <?php if (isset($_SESSION['email'])) { ?>
+                                            <div class="alert alert-warning"><?= $_SESSION['email']; ?></div>
+                                        <?php }
+                                        unset($_SESSION['email']) ?>
                                     </div>
                                     <div class="form-group">
                                         <input type="password" class="form-control" placeholder="Password" required name="password">
+                                        <?php if (isset($_SESSION['password'])) { ?>
+                                            <div class="alert alert-warning"><?= $_SESSION['password']; ?></div>
+                                        <?php }
+                                        unset($_SESSION['password']) ?>
                                     </div>
                                     <button type="submit" class="btn login-form__btn submit w-100" name="login" value="login">Login</button>
                                 </form>
-                                    <p class="mt-5 login-form__footer">Don't have an account <a href="http://localhost/SD_Project/backend/registration/registration.php" class="text-primary">Sign Up</a> now</p>
-                                    </p>
-                                </div>
+                                <p class="mt-5 login-form__footer">Don't have an account <a href="http://localhost/SD_Project/backend/registration/registration.php" class="text-primary">Sign Up</a> now</p>
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -65,7 +71,8 @@
             </div>
         </div>
     </div>
-    
+    </div>
+
 
     <!--**********************************
         Scripts
@@ -76,22 +83,5 @@
     <script src="../../assets/backend/js/gleek.js"></script>
     <script src="../../assets/backend/js/styleSwitcher.js"></script>
 </body>
+
 </html>
-<?php
-    if(isset($_POST["login"])){
-        if(!empty($_POST["email"]) && !empty($_POST["password"])){
-            $_SESSION["email"] = filter_input(INPUT_POST,"email", FILTER_SANITIZE_EMAIL);
-            $_SESSION["password"] = $_POST["password"];
-            header("Location: http://localhost/SD_Project/backend/dashboard/dashboard.php");
-            exit();
-        }
-        else{
-            echo "Missing credentials <br>";
-        }
-    }
-?>
-
-
-
-
-
