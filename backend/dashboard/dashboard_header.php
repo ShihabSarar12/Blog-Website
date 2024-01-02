@@ -127,12 +127,12 @@
 
                 <li class="mega-menu mega-menu-sm">
                     <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                        <i class="icon-globe-alt menu-icon"></i><span class="nav-text">Homepage</span>
+                        <i class="icon-globe-alt menu-icon"></i><span class="nav-text">Users</span>
                     </a>
                     <ul aria-expanded="false">
-                        <li><a href="../../assets/backend/layout-blank.html">Banner</a></li>
-                        <li><a href="../../assets/backend/layout-one-column.html">Sidebar</a></li>
-                        <li><a href="../../assets/backend/layout-two-column.html">Social Links</a></li>
+                        <li><a href="../users/requests.php">Request</a></li>
+                        <li><a href="../users/post.php">Post</a></li>
+                        <li><a href="../users/allUsers.php">All Users</a></li>
                     </ul>
                 </li>
                 <li class="mega-menu mega-menu-sm">
