@@ -16,6 +16,11 @@
     $confirm_password = $_POST['confirm_password'];
     // Password Validation End
 
+//     echo $name;
+//     echo $email;
+//     echo $password;
+// die();
+
     $errors = [];
     $field_names = ['name'=>'Name Required','email'=>'Email Required','password'=>'Password Required','confirm_password'=>'Confirm Password Required'];
 
@@ -61,14 +66,15 @@
 
                     $id = mysqli_insert_id($db_connect);
                     $file_name = $id.'.'.$extension_name;
-                    $new_location = 'uploads/user/'.$file_name;
+                    $new_location = '../../uploads/user/'.$file_name;
+
                     move_uploaded_file($upload_photo['tmp_name'],$new_location);
 
                     $update = "UPDATE users SET profile_photo='$file_name' WHERE id=$id";
                     $update_result = mysqli_query($db_connect,$update);
 
                     $_SESSION['complete'] = 'Registration Successfully Completed!';
-                    header('location:http://localhost/SD_Project/backend/registration/registration.php');
+                    header('location:http://localhost/SD_Project/backend/login/login.php');
                 }
                 else{
                     $_SESSION['size'] = "File size must be 1mb";
