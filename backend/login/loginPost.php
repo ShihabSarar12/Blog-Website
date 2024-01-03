@@ -8,7 +8,7 @@ $password = $_POST['password'];
 $select_email = "SELECT COUNT(*) as email_exist FROM users WHERE email='$email'";
 $select_email_result = mysqli_query($db_connect, $select_email);
 $after_assoc_email = mysqli_fetch_assoc($select_email_result);
-
+$user_data = mysqli_fetch_assoc($select_email_result);
 
 if($after_assoc_email['email_exist'] == 1){
     $select_password = "SELECT * FROM users WHERE email='$email'";
@@ -21,6 +21,13 @@ if($after_assoc_email['email_exist'] == 1){
         $_SESSION['name'] = $after_assoc_password['name'];
         $_SESSION['email'] = $after_assoc_password['email'];
         $_SESSION['photo'] = $after_assoc_password['profile_photo'];
+        #role checkin
+        $user_role = $user_data['role'];
+        if($user_role === 'admin') {
+            $_SESSION['is_admin'] = true; 
+        } else {
+            $_SESSION['is_admin'] = false; 
+        }
         header("Location: http://localhost/SD_Project/backend/dashboard/dashboard.php");
     }
     else{
