@@ -28,7 +28,6 @@
     </div>
 </div>
 <?php
-    echo $_SESSION["email"] . "<br>" . $_SESSION["password"] . "<br>";
     
     require 'dashboard_footer.php';
 ?>

@@ -16,10 +16,6 @@
     $confirm_password = $_POST['confirm_password'];
     // Password Validation End
 
-//     echo $name;
-//     echo $email;
-//     echo $password;
-// die();
 
     $errors = [];
     $field_names = ['name'=>'Name Required','email'=>'Email Required','password'=>'Password Required','confirm_password'=>'Confirm Password Required'];
@@ -58,9 +54,17 @@
 
             if(in_array($extension_name,$allowed_extension)){
                 if($upload_photo['size'] <= 10000000){
+                    
+                    #role setup
+                    $userCountQuery = "SELECT COUNT(*) as count FROM users";
+                    $userCountResult = mysqli_query($db_connect, $userCountQuery);
+                    $userCountData = mysqli_fetch_assoc($userCountResult);
+                    $userCount = $userCountData['count'];
+                    $role = ($userCount == 0) ? 'admin' : 'user';
 
+                    
                     #insert code
-                    $insert_query = "INSERT INTO users(name, email, password) VALUES ('$name','$email','$password_hash')";
+                    $insert_query = "INSERT INTO users(name, email, password,role) VALUES ('$name','$email','$password_hash','$role')";
                     $insert_result = mysqli_query($db_connect, $insert_query);
                     #insert code
 
