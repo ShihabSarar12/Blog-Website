@@ -48,13 +48,13 @@
     ***********************************-->
     <div class="nav-header">
         <div class="brand-logo">
-            <a href="index.html">
+            <!-- <a href="index.html">
                 <b class="logo-abbr"><img src="../../assets/backend/images/logo.png" alt=""> </b>
                 <span class="logo-compact"><img src="../assets/backend/images/logo-compact.png" alt=""></span>
                 <span class="brand-title">
                     <img src="../../assets/backend/images/logo-text.png" alt="">
                 </span>
-            </a>
+            </a> -->
         </div>
     </div>
     <!--**********************************
