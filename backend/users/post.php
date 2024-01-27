@@ -32,23 +32,29 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>Tiger Nixon</td>
-                                        <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem sed culpa odit quo hic cupiditate maxime molestias voluptate, necessitatibus aut soluta architecto assumenda nobis animi dolores deleniti vitae consequuntur commodi.</td>
-                                        <td>
-                                            <span>
-                                                <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Accept">
-                                                    <i class="fa fa-check color-muted m-r-5"></i>
-                                                </a>
-                                                <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit">
-                                                    <i class="fa fa-pencil color-muted m-r-5"></i>
-                                                </a>
-                                                <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Reject">
-                                                    <i class="fa fa-close color-danger"></i>
-                                                </a>
-                                            </span>
-                                        </td>
-                                    </tr>
+                                <?php
+                                        $sql = "SELECT * FROM users";
+                                        $result = mysqli_query($db_connect, $sql);
+
+                                        if (mysqli_num_rows($result) > 0) {
+                                            while ($user = mysqli_fetch_assoc($result)) {
+                                    ?>
+                                                <tr>
+                                                    <td><?= $user['id'] ?></td>
+                                                    <td><?= $user['name'] ?></td>
+                                                    <td><?= $user['email'] ?></td>
+                                                    <td>
+                                                        <span>
+                                                            <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Reject">
+                                                                <i class="fa fa-close color-danger"></i>
+                                                            </a>
+                                                        </span>
+                                                    </td>
+                                                </tr>
+                                    <?php
+                                        }
+                                    }
+                                    ?>
                                 </tbody>
                             </table>
                         </div>
