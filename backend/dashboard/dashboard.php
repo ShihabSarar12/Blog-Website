@@ -10,7 +10,7 @@
 ?>
 
 <div class="row">
-    <div class="col-lg-12 col-sm-12">
+    <div class="col-lg-12 col-sm-3">
         <div class="card gradient-1">
             <div class="card-body">
                 <h3 class="card-title text-white">Howdy user</h3>
