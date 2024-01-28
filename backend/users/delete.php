@@ -10,6 +10,7 @@
         $sql = 'DELETE FROM ' . $_GET['entity'] . ' WHERE ' . $_GET['entityAtr'] . ' = ' . $_GET['id'];
         $result = mysqli_query($db_connect, $sql);
         if ($result > 0) {
+            //FIXME redirect dynamic
             header("Location: http://localhost/SD_Project/backend/users/post.php");
         }
     } catch(Exception $e){
