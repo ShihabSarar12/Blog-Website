@@ -14,12 +14,10 @@
         <div class="card gradient-1">
             <div class="card-body">
                 <h3 class="card-title text-white">Howdy user</h3>
-                <div class="d-inline-block">
-                    <h2 class="text-white">
-                        <?php
-                            echo $_SESSION["email"]; 
-                        ?>
-                    </h2>
+                <div>
+                    <?php
+                        echo '<h2 class="text-wrap text-white">' . $_SESSION["email"] . '</h2>'; 
+                    ?>
                     <p class="text-white mb-0">Jan - March 2019</p>
                 </div>
                 <span class="float-right display-5 opacity-5"><i class="fa fa-heart"></i></span>

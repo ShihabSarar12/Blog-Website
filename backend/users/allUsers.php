@@ -47,8 +47,9 @@
                                                     <td><?= $user['email'] ?></td>
                                                     <td>
                                                         <span>
-                                                            <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Reject">
-                                                                <i class="fa fa-close color-danger"></i>
+                                                            <!-- TODO have to change directory -->
+                                                            <a href="./delete.php?entity=users&entityAtr=id&id=<?=$user['id']?>" data-toggle="tooltip" data-placement="top" title="" data-original-title="Reject">
+                                                            <i class="fa fa-close color-danger"></i>
                                                             </a>
                                                         </span>
                                                     </td>

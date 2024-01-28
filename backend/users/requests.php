@@ -1,5 +1,6 @@
 <?php
     require '../dashboard/dashboard_header.php';
+    require '../database/db.php';
 ?>
 
 <!--**********************************
@@ -26,29 +27,43 @@
                             <table class="table table-striped table-bordered zero-configuration">
                                 <thead>
                                     <tr>
-                                        <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Post</th>
+                                        <th>ID</th>
+                                        <th>Title</th>
+                                        <th>Blog Category</th>
+                                        <th>Blog Description</th>
+                                        <th>User Name</th>
+                                        <th>Posted At</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>Tiger Nixon</td>
-                                        <td>System Architect</td>
-                                        <td>Edinburgh</td>
-                                        <td>
-                                            <span>
-                                                <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Accept">
-                                                    <i class="fa fa-check color-muted m-r-5"></i>
-                                                </a>
-                                                <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Reject">
-                                                    <i class="fa fa-close color-danger"></i>
-                                                </a>
-                                            </span>
-                                        </td>
-                                    </tr>
-                                    
+                                <?php
+                                        $sql = "SELECT * FROM requestpost INNER JOIN users
+                                        ON requestpost.id = users.id"; 
+                                        $result = mysqli_query($db_connect, $sql);
+
+                                        if (mysqli_num_rows($result) > 0) {
+                                            while ($post = mysqli_fetch_assoc($result)) {
+                                    ?>
+                                                <tr>
+                                                    <td><?= $post['blogID'] ?></td>
+                                                    <td><?= $post['blogTitle'] ?></td>
+                                                    <td><?= $post['blogCategory'] ?></td>
+                                                    <td><?= $post['blogDescription'] ?></td>
+                                                    <td><?= $post['name'] ?></td>
+                                                    <td><?= $post['posted'] ?></td>
+                                                    <td>
+                                                        <span>
+                                                            <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Reject">
+                                                                <i class="fa fa-close color-danger"></i>
+                                                            </a>
+                                                        </span>
+                                                    </td>
+                                                </tr>
+                                    <?php
+                                        }
+                                    }
+                                    ?>
                                 </tbody>
                             </table>
                         </div>

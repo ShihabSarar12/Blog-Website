@@ -1,5 +1,6 @@
 <?php
     require '../dashboard/dashboard_header.php';
+    require '../database/db.php';
 ?>
 
 <!--**********************************
@@ -26,27 +27,35 @@
                         <table class="table table-striped table-bordered zero-configuration">
                                 <thead>
                                     <tr>
-                                        <th>Name</th>
-                                        <th>Post</th>
+                                        <th>ID</th>
+                                        <th>Title</th>
+                                        <th>Blog Category</th>
+                                        <th>Blog Description</th>
+                                        <th>User Name</th>
+                                        <th>Posted At</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 <?php
-                                        $sql = "SELECT * FROM users";
+                                        $sql = "SELECT * FROM userpost INNER JOIN users
+                                        ON userpost.id = users.id"; 
                                         $result = mysqli_query($db_connect, $sql);
 
                                         if (mysqli_num_rows($result) > 0) {
-                                            while ($user = mysqli_fetch_assoc($result)) {
+                                            while ($post = mysqli_fetch_assoc($result)) {
                                     ?>
                                                 <tr>
-                                                    <td><?= $user['id'] ?></td>
-                                                    <td><?= $user['name'] ?></td>
-                                                    <td><?= $user['email'] ?></td>
+                                                    <td><?= $post['blogID'] ?></td>
+                                                    <td><?= $post['blogTitle'] ?></td>
+                                                    <td><?= $post['blogCategory'] ?></td>
+                                                    <td><?= $post['blogDescription'] ?></td>
+                                                    <td><?= $post['name'] ?></td>
+                                                    <td><?= $post['posted'] ?></td>
                                                     <td>
                                                         <span>
-                                                            <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Reject">
-                                                                <i class="fa fa-close color-danger"></i>
+                                                            <a href="./delete.php?entity=userpost&entityAtr=blogID&id=<?=$post['blogID']?>" data-toggle="tooltip" data-placement="top" title="" data-original-title="Reject">
+                                                            <i class="fa fa-close color-danger"></i>
                                                             </a>
                                                         </span>
                                                     </td>
