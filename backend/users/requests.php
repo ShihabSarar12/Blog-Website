@@ -54,8 +54,8 @@
                                                     <td><?= $post['posted'] ?></td>
                                                     <td>
                                                         <span>
-                                                            <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Reject">
-                                                                <i class="fa fa-close color-danger"></i>
+                                                            <a href="./delete.php?entity=requestpost&entityAtr=blogID&id=<?=$post['blogID']?>" data-toggle="tooltip" data-placement="top" title="" data-original-title="Reject">
+                                                            <i class="fa fa-close color-danger"></i>
                                                             </a>
                                                         </span>
                                                     </td>
