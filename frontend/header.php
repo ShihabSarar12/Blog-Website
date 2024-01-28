@@ -74,6 +74,11 @@
 									</li>
 								</ul>
 							</div>
+							<div class="header-buttons">
+								<button class="burger-menu icon-button ms-2 float-end float-lg-none">
+									<span class="burger-icon"></span>
+								</button>
+							</div>
 						</div>
 					</div>
 
