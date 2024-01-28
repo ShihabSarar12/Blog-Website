@@ -56,8 +56,11 @@ require '../database/db.php';
                                                     <td><?= $post['posted'] ?></td>
                                                     <td>
                                                         <span>
-                                                            <a href="./delete.php?entity=requestpost&entityAtr=blogID&id=<?= $post['blogID'] ?>" data-toggle="tooltip" data-placement="top" title="" data-original-title="Reject">
-                                                                <i class="fa fa-close color-danger"></i>
+                                                            <a href="./approve.php?id=<?=$post['blogID']?>" data-toggle="tooltip" data-placement="top" title="" data-original-title="Approve">
+                                                            <i class="fa fa-check color-success"></i>
+                                                            </a>
+                                                            <a href="./delete.php?entity=requestpost&entityAtr=blogID&redirect=requests&id=<?=$post['blogID']?>" data-toggle="tooltip" data-placement="top" title="" data-original-title="Reject">
+                                                            <i class="fa fa-close color-danger"></i>
                                                             </a>
                                                         </span>
                                                     </td>
