@@ -1,3 +1,14 @@
+
+<?php
+    session_start();
+    include '../database/db.php';
+    $email = mysqli_real_escape_string($db_connect, $_SESSION['email']);
+    $sql = "select role from users where email = '$email'";
+    $sql_result = mysqli_query($db_connect,$sql);
+    $user = mysqli_fetch_assoc($sql_result);
+    $role = $user['role'];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -124,26 +135,26 @@
                         <!-- <li><a href="./index-2.html">Home 2</a></li> -->
                     </ul>
                 </li>
-
-                <li class="mega-menu mega-menu-sm">
-                    <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                        <i class="icon-globe-alt menu-icon"></i><span class="nav-text">Users</span>
-                    </a>
-                    <ul aria-expanded="false">
-                        <li><a href="../users/requests.php">Request</a></li>
-                        <li><a href="../users/post.php">Post</a></li>
-                        <li><a href="../users/allUsers.php">All Users</a></li>
-                    </ul>
-                </li>
-                <li class="mega-menu mega-menu-sm">
-                    <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                        <i class="icon-globe-alt menu-icon"></i><span class="nav-text">Categories</span>
-                    </a>
-                    <ul aria-expanded="false">
-                        <li><a href="../categories/categories.php">All Categories</a></li>
-                    </ul>
-                </li>
-
+                <?php if($role=='admin'){ ?>
+                    <li class="mega-menu mega-menu-sm">
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                            <i class="icon-globe-alt menu-icon"></i><span class="nav-text">Users</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="../users/requests.php">Request</a></li>
+                            <li><a href="../users/post.php">Post</a></li>
+                            <li><a href="../users/allUsers.php">All Users</a></li>
+                        </ul>
+                    </li>
+                    <li class="mega-menu mega-menu-sm">
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                            <i class="icon-globe-alt menu-icon"></i><span class="nav-text">Categories</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="../categories/categories.php">All Categories</a></li>
+                        </ul>
+                    </li>
+                <?php } ?>
             </ul>
         </div>
     </div>
