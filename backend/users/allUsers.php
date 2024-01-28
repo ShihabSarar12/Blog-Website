@@ -47,7 +47,7 @@
                                                     <td><?= $user['email'] ?></td>
                                                     <td>
                                                         <span>
-                                                            <a href="./delete.php?entity=users&entityAtr=id&id=<?=$user['id']?>" data-toggle="tooltip" data-placement="top" title="" data-original-title="Reject">
+                                                            <a href="./delete.php?entity=users&entityAtr=id&redirect=allUsers&id=<?=$user['id']?>" data-toggle="tooltip" data-placement="top" title="" data-original-title="Reject">
                                                             <i class="fa fa-close color-danger"></i>
                                                             </a>
                                                         </span>

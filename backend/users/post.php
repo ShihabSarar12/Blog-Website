@@ -54,7 +54,12 @@
                                                     <td><?= $post['posted'] ?></td>
                                                     <td>
                                                         <span>
-                                                            <a href="./delete.php?entity=userpost&entityAtr=blogID&id=<?=$post['blogID']?>" data-toggle="tooltip" data-placement="top" title="" data-original-title="Reject">
+                                                            <a href="./update.php?
+                                                            blogTitle=<?=$post['blogTitle']?>&blogCategory=<?=$post['blogCategory']?>&
+                                                            blogDescription=<?=$post['blogDescription']?>&id=<?=$post['blogID']?>" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit">
+                                                            <i class="fa fa-pencil color-success"></i>
+                                                            </a>
+                                                            <a href="./delete.php?entity=userpost&entityAtr=blogID&redirect=post&id=<?=$post['blogID']?>" data-toggle="tooltip" data-placement="top" title="" data-original-title="Reject">
                                                             <i class="fa fa-close color-danger"></i>
                                                             </a>
                                                         </span>
