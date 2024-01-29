@@ -1,6 +1,5 @@
 <?php
     require '../database/db.php';
-
     try {
         $blogTitle = mysqli_real_escape_string($db_connect, $_POST['blogTitle']);
         $blogDescription = mysqli_real_escape_string($db_connect, $_POST['blogDescription']);

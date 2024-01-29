@@ -1,6 +1,6 @@
 <?php
-require '../dashboard/dashboard_header.php';
-require '../database/db.php';
+    require '../dashboard/dashboard_header.php';
+    require '../database/db.php';
 ?>
 <!--**********************************
     Content body start
