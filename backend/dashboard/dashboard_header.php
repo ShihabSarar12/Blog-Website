@@ -1,3 +1,14 @@
+
+<?php
+    session_start();
+    include '../database/db.php';
+    $email = mysqli_real_escape_string($db_connect, $_SESSION['email']);
+    $sql = "select role from users where email = '$email'";
+    $sql_result = mysqli_query($db_connect,$sql);
+    $user = mysqli_fetch_assoc($sql_result);
+    $role = $user['role'];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,6 +30,17 @@
     <link rel="stylesheet" href="../../assets/backend/plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css">
     <!-- Custom Stylesheet -->
     <link href="../../assets/backend/css/style.css" rel="stylesheet">
+    
+    <!-- summernote -->
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
 
 </head>
 
@@ -127,23 +149,34 @@
 
                 <li class="mega-menu mega-menu-sm">
                     <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                        <i class="icon-globe-alt menu-icon"></i><span class="nav-text">Users</span>
+                        <i class="icon-globe-alt menu-icon"></i><span class="nav-text">Blog</span>
                     </a>
                     <ul aria-expanded="false">
-                        <li><a href="../users/requests.php">Request</a></li>
-                        <li><a href="../users/post.php">Post</a></li>
-                        <li><a href="../users/allUsers.php">All Users</a></li>
-                    </ul>
-                </li>
-                <li class="mega-menu mega-menu-sm">
-                    <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                        <i class="icon-globe-alt menu-icon"></i><span class="nav-text">Categories</span>
-                    </a>
-                    <ul aria-expanded="false">
-                        <li><a href="../categories/categories.php">All Categories</a></li>
+                        <li><a href="../userRole/writeBlog.php">Write Blog</a></li>
+                        <li><a href="../userRole/allBlogs.php">Your Blogs</a></li>
                     </ul>
                 </li>
 
+                <?php if($role=='admin'){ ?>
+                    <li class="mega-menu mega-menu-sm">
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                            <i class="icon-globe-alt menu-icon"></i><span class="nav-text">Users</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="../users/requests.php">Request</a></li>
+                            <li><a href="../users/post.php">Post</a></li>
+                            <li><a href="../users/allUsers.php">All Users</a></li>
+                        </ul>
+                    </li>
+                    <li class="mega-menu mega-menu-sm">
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                            <i class="icon-globe-alt menu-icon"></i><span class="nav-text">Categories</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="../categories/categories.php">All Categories</a></li>
+                        </ul>
+                    </li>
+                <?php } ?>
             </ul>
         </div>
     </div>
