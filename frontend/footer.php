@@ -25,7 +25,7 @@
 
 	<!-- logo -->
 	<div class="logo">
-		<img src="images/logo.svg" alt="Katen">
+		<img src="../assets/frontend/images/logo3.jpg" alt="">
 	</div>
 
 	<!-- menu -->

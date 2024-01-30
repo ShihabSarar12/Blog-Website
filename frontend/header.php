@@ -32,7 +32,18 @@
 
 						<div class="col-md-4 col-xs-12">
 							<!-- site logo -->
-							<a class="navbar-brand" href="classic.html"><img src="images/logo.svg" alt="logo" /></a> 
+							<h1></h1>
+							<p style="
+								    color: #203656;
+									font-family: 'Poppins', sans-serif;
+									font-weight: 700;
+									line-height: 1.4;
+							">
+								<a class="navbar-brand" style="font-size: 40px;" href="index.php">
+									Heritage Tales.
+								</a> 
+							</p>
+							
 						</div>
 
 						<div class="col-md-8 d-none d-md-block">

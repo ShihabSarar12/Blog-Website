@@ -5,7 +5,12 @@
 	<!-- section main content -->
 	<section class="main-content">
 		<div class="container-xl">
-
+            <div class="row">
+                <div class="col-lg-12">
+                    <img src="../assets/frontend/images/contact.jpg" alt="">
+                </div>
+            </div>
+            <div class="spacer" data-height="50"></div>
 			<div class="row">
 						
                 <div class="col-md-4">
@@ -44,9 +49,6 @@
                 </div>
 
             </div>
-
-            <div class="spacer" data-height="50"></div>
-
 		</div>
 	</section>
 
