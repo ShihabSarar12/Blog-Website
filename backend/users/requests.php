@@ -32,7 +32,7 @@ require '../database/db.php';
                                             <th>ID</th>
                                             <th>Title</th>
                                             <th>Blog Category</th>
-                                            <th>Blog Description</th>
+                                            <th style="width: 600px;">Blog Description</th>
                                             <th>User Name</th>
                                             <th>Posted At</th>
                                             <th>Action</th>
@@ -51,7 +51,9 @@ require '../database/db.php';
                                                     <td><?= $post['blogID'] ?></td>
                                                     <td><?= $post['blogTitle'] ?></td>
                                                     <td><?= $post['blogCategory'] ?></td>
-                                                    <td><?= $post['blogDescription'] ?></td>
+                                                    <td style="width: 600px;display: block;overflow: scroll; height: 100px">
+                                                        <?= htmlspecialchars_decode($post['blogDescription']) ?>
+                                                    </td>
                                                     <td><?= $post['name'] ?></td>
                                                     <td><?= $post['posted'] ?></td>
                                                     <td>

@@ -19,7 +19,7 @@
 </div>
 
 
-<div class="canvas-menu d-flex align-items-end flex-column open">
+<div class="canvas-menu d-flex align-items-end flex-column">
 	<!-- close button -->
 	<button type="button" class="btn-close" aria-label="Close"></button>
 

@@ -1,5 +1,5 @@
 <?php
-session_start();
+    session_start();
 ?>
 <!DOCTYPE html>
 <html class="h-100" lang="en">
@@ -62,7 +62,7 @@ session_start();
                                     </div>
                                     <button type="submit" class="btn login-form__btn submit w-100" name="login" value="login">Login</button>
                                 </form>
-                                <p class="mt-5 login-form__footer">Don't have an account <a href="http://localhost/SD_Project/backend/registration/registration.php" class="text-primary">Sign Up</a> now</p>
+                                <p class="mt-5 login-form__footer">Don't have an account <a href="http://localhost/SD_Project/backend/registration/registration.php" class="text-primary">Sign Up</a> now
                                 </p>
                             </div>
                         </div>

@@ -7,6 +7,7 @@
     $sql_result = mysqli_query($db_connect,$sql);
     $user = mysqli_fetch_assoc($sql_result);
     $role = $user['role'];
+
 ?>
 
 <!DOCTYPE html>
@@ -101,25 +102,16 @@
                 </div>
             </div>
             <div class="header-right">
-                    <li class="icons dropdown">
-                        <div class="user-img c-pointer position-relative"   data-toggle="dropdown">
+                    <li class="icons dropdown show">
+                        <div class="user-img c-pointer position-relative mr-3 mt-5"   data-toggle="dropdown">
                             <span class="activity active"></span>
-                            <img src="../../assets/backend/images/user/1.png" height="40" width="40" alt="">
+                            <img src="../../uploads/user/<?=$_SESSION['photo']?>" style="height:70px; width:70px !important"  alt="">
                         </div>
-                        <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
-                            <div class="dropdown-content-body">
-                                <ul>
-                                    <li>
-                                        <a href="../../assets/backend/app-profile.html"><i class="icon-user"></i> <span>Profile</span></a>
-                                    </li>
-                                    <hr class="my-2">
-                                    <li>
-                                        <form action="../logout/logout.php" method="post">
-                                            <input type="submit" value="logout" name="logout">
-                                        </form>
-                                    </li>
-                                </ul>
-                            </div>
+                        <div class="mt-4">
+                            <form action="../logout/logout.php" method="post">
+                                <input type="hidden" value="logout" name="logout">
+                                <button type="submit" class="btn login-form__btn submit w-100 text-white" name="logout" value="logout">Logout</button>
+                            </form>
                         </div>
                     </li>
                 </ul>
