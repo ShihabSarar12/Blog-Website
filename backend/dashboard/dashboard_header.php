@@ -22,8 +22,6 @@
     <meta name="theme-name" content="synexdigital" />
   
     <title>Blog Post</title>
-    <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="../../assets/backend/images/favicon.png">
     <!-- Pignose Calender -->
     <link href="../../assets/backend/plugins/pg-calendar/css/pignose.calendar.min.css" rel="stylesheet">
     <!-- Chartist -->
@@ -69,15 +67,11 @@
     <!--**********************************
         Nav header start
     ***********************************-->
-    <div class="nav-header">
+    <div class="nav-header" style="background-color: #FEA58F;">
         <div class="brand-logo">
-            <!-- <a href="index.html">
-                <b class="logo-abbr"><img src="../../assets/backend/images/logo.png" alt=""> </b>
-                <span class="logo-compact"><img src="../assets/backend/images/logo-compact.png" alt=""></span>
-                <span class="brand-title">
-                    <img src="../../assets/backend/images/logo-text.png" alt="">
-                </span>
-            </a> -->
+            <span class="brand-title">
+                <img src="../../assets/backend/images/logo3.jpg" alt="">
+            </span>
         </div>
     </div>
     <!--**********************************
