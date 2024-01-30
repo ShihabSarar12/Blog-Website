@@ -1,5 +1,6 @@
 <?php
 require './header.php';
+require '../backend/database/db.php';
 ?>
 
 <!-- section main content -->
@@ -73,28 +74,33 @@ require './header.php';
 
 					<!-- widget categories -->
 					<div class="widget rounded">
-						<div class="widget-header text-center">
-							<h3 class="widget-title">Explore Topics</h3>
-							<img src="images/wave.svg" class="wave" alt="wave" />
+							<div class="widget-header text-center">
+								<h3 class="widget-title">Blog Categories</h3>
+							</div>
+							<div class="widget-content">
+								<ul class="list">
+									<?php
+										$sql = 'SELECT * FROM userpost INNER JOIN users
+										ON userpost.id = users.id;';
+										$result = mysqli_query($db_connect, $sql);
+										
+										if (mysqli_num_rows($result) > 0) {
+											while ($post = mysqli_fetch_assoc($result)) {
+												// Array ( [blogID] => 6 [blogTitle] => Dummy23 [blogCategory] => Dummy4 [posted] => 2024-01-28 15:46:30 [blogDescription] => DummyDummyDummy123 [id] => 4 [blogImage] => [name] => Carlos Mcintyre [email] => dypezubyb@mailinator.com [password] => $2y$10$CRqn5VRi8npFdp4977GbLu/aVyTYEFfQlqhhBrCI.lhfds9mKc62W [profile_photo] => 4.png [role] => admin )
+									?>
+										<li><a href="#"><?= $name = $post['blogCategory']?></a><span></span></li>
+									<?php
+											}
+										}
+									?>
+								</ul>
+							</div>
+							
 						</div>
-						<div class="widget-content">
-							<ul class="list">
-								<li><a href="#">Lifestyle</a><span>(5)</span></li>
-								<li><a href="#">Inspiration</a><span>(2)</span></li>
-								<li><a href="#">Fashion</a><span>(4)</span></li>
-								<li><a href="#">Politic</a><span>(1)</span></li>
-								<li><a href="#">Trending</a><span>(7)</span></li>
-								<li><a href="#">Culture</a><span>(3)</span></li>
-							</ul>
-						</div>
-
-					</div>
-
 					<!-- widget newsletter -->
 					<div class="widget rounded">
 						<div class="widget-header text-center">
 							<h3 class="widget-title">Newsletter</h3>
-							<img src="images/wave.svg" class="wave" alt="wave" />
 						</div>
 						<div class="widget-content">
 							<span class="newsletter-headline text-center mb-3">Join 70,000 subscribers!</span>

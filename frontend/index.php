@@ -164,7 +164,6 @@
 						<div class="widget rounded">
 							<div class="widget-header text-center">
 								<h3 class="widget-title">Newsletter</h3>
-								<img src="images/wave.svg" class="wave" alt="wave" />
 							</div>
 							<div class="widget-content">
 								<span class="newsletter-headline text-center mb-3">Join 70,000 subscribers!</span>
