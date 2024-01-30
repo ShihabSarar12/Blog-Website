@@ -72,6 +72,9 @@
 								</ul>
 							</div>
 							<div class="header-buttons">
+								<a href="../backend/login/login.php" class="icon-button ">
+									<i class="icon-login"></i>
+								</a>
 								<button class="burger-menu icon-button ms-2 float-end float-lg-none">
 									<span class="burger-icon"></span>
 								</button>
