@@ -56,9 +56,7 @@
 					if (mysqli_num_rows($result) > 0) {
 						while ($post = mysqli_fetch_assoc($result)) {
 							// Array ( [blogID] => 6 [blogTitle] => Dummy23 [blogCategory] => Dummy4 [posted] => 2024-01-28 15:46:30 [blogDescription] => DummyDummyDummy123 [id] => 4 [blogImage] => [name] => Carlos Mcintyre [email] => dypezubyb@mailinator.com [password] => $2y$10$CRqn5VRi8npFdp4977GbLu/aVyTYEFfQlqhhBrCI.lhfds9mKc62W [profile_photo] => 4.png [role] => admin )
-				?>
-						
-				<!-- post -->
+						?>
 							<div class="post post-classic rounded bordered">
 								<div class="thumb top-rounded">
 									<a href="category.html" class="category-badge lg position-absolute"><?=$post['blogCategory']?></a>
@@ -74,7 +72,7 @@
 										<li class="list-inline-item"><?=$post['posted']?></li>
 									</ul>
 									<h5 class="post-title mb-3 mt-3"><a href="blog-single.html"><?=$post['blogTitle']?></a></h5>
-									<p class="excerpt mb-0"><?=$post['blogDescription']?></p>
+									<p class="excerpt mb-0"></p>
 								</div>
 								<div class="post-bottom clearfix d-flex align-items-center">
 									<div class="social-share me-auto">
@@ -89,15 +87,14 @@
 										</ul>
 									</div>
 									<div class="float-end d-none d-md-block">
-										<a href="blog-single.html" class="more-link">Continue reading<i class="icon-arrow-right"></i></a> 
+										<a href="blog-single.php?id=<?=$post['id']?>" class="more-link">Continue reading<i class="icon-arrow-right"></i></a> 
 									</div>
 									<div class="more-button d-block d-md-none float-end">
-										<a href="blog-single.html"><span class="icon-options"></span></a>
+										<a href="#"><span class="icon-options"></span></a>
 									</div>
 								</div>
 							</div>
-				<!-- post -->
-				<?php 
+						<?php 
 						}
 					}
 				?>

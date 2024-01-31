@@ -1,10 +1,15 @@
 <?php
 	include '../frontend/header.php';
 	include '../backend/database/db.php';
+
+	$id =  $_GET['id'];
+
+	$sql = "SELECT * FROM userpost WHERE id = $id";
+	$result = mysqli_query($db_connect, $sql);
+	$row = mysqli_fetch_assoc($result);
 ?>
 <!-- site wrapper -->
 <div class="site-wrapper">
-
 	<div class="main-overlay"></div>
 
 	<!-- section main content -->
@@ -26,7 +31,7 @@
                     <div class="post post-single">
 						<!-- post header -->
 						<div class="post-header">
-							<h1 class="title mt-0 mb-3">3 Easy Ways To Make Your iPhone Faster</h1>
+							<h1 class="title mt-0 mb-3"><?= $row['blogTitle']?></h1>
 							<ul class="meta list-inline mb-0">
 								<li class="list-inline-item"><a href="#"><img src="images/other/author-sm.png" class="author" alt="author"/>Katen Doe</a></li>
 								<li class="list-inline-item"><a href="#">Trending</a></li>
