@@ -1,7 +1,7 @@
 <?php
-require '../dashboard/dashboard_header.php';
-require '../database/db.php';
+    include '../dashboard/dashboard_header.php';
 ?>
+
 
 <!--**********************************
     Content body start
@@ -13,7 +13,7 @@ require '../database/db.php';
             <div class="col p-md-0">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
-                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Home</a></li>
+                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Banner</a></li>
                 </ol>
             </div>
         </div>
@@ -21,47 +21,35 @@ require '../database/db.php';
 
         <div class="container-fluid">
             <div class="row">
-                <div class="col-12">
+                <div class="col-lg-8">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Data Table</h4>
+                            <h4 class="card-title">Banner Table</h4>
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered zero-configuration">
                                     <thead>
                                         <tr>
-                                            <th>ID</th>
+                                            <th>Sl</th>
+                                            <th>Category</th>
                                             <th>Title</th>
-                                            <th>Blog Category</th>
-                                            <th style="width: 600px;">Blog Description</th>
-                                            <th>User Name</th>
-                                            <th>Posted At</th>
-                                            <th>Action</th>
+                                            <th>Image</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $sql = "SELECT * FROM requestpost INNER JOIN users
-                                        ON requestpost.id = users.id";
+                                        $sql = "SELECT * FROM users WHERE role = 'user'";
                                         $result = mysqli_query($db_connect, $sql);
 
                                         if (mysqli_num_rows($result) > 0) {
-                                            while ($post = mysqli_fetch_assoc($result)) {
+                                            while ($user = mysqli_fetch_assoc($result)) {
                                         ?>
                                                 <tr>
-                                                    <td><?= $post['blogID'] ?></td>
-                                                    <td><?= $post['blogTitle'] ?></td>
-                                                    <td><?= $post['blogCategory'] ?></td>
-                                                    <td style="width: 600px;display: block;overflow: scroll; height: 100px">
-                                                        <?= htmlspecialchars_decode($post['blogDescription']) ?>
-                                                    </td>
-                                                    <td><?= $post['name'] ?></td>
-                                                    <td><?= $post['posted'] ?></td>
+                                                    <td><?= $user['id'] ?></td>
+                                                    <td><?= $user['name'] ?></td>
+                                                    <td><?= $user['email'] ?></td>
                                                     <td>
                                                         <span>
-                                                            <a href="./approve.php?id=<?=$post['blogID']?>" data-toggle="tooltip" data-placement="top" title="" data-original-title="Approve">
-                                                            <i class="fa fa-check color-success"></i>
-                                                            </a>
-                                                            <a href="./delete.php?entity=requestpost&entityAtr=blogID&redirect=requests&id=<?=$post['blogID']?>" data-toggle="tooltip" data-placement="top" title="" data-original-title="Reject">
+                                                            <a href="./delete.php?entity=users&entityAtr=id&redirect=allUsers&id=<?=$user['id']?>" data-toggle="tooltip" data-placement="top" title="" data-original-title="Reject">
                                                             <i class="fa fa-close color-danger"></i>
                                                             </a>
                                                         </span>
@@ -86,5 +74,5 @@ require '../database/db.php';
 ***********************************-->
 
 <?php
-require '../dashboard/dashboard_footer.php';
+    include '../dashboard/dashboard_footer.php';
 ?>

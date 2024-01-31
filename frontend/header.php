@@ -32,7 +32,18 @@
 
 						<div class="col-md-4 col-xs-12">
 							<!-- site logo -->
-							<a class="navbar-brand" href="classic.html"><img src="images/logo.svg" alt="logo" /></a> 
+							<h1></h1>
+							<p style="
+								    color: #203656;
+									font-family: 'Poppins', sans-serif;
+									font-weight: 700;
+									line-height: 1.4;
+							">
+								<a class="navbar-brand" style="font-size: 40px;" href="index.php">
+									Heritage Tales.
+								</a> 
+							</p>
+							
 						</div>
 
 						<div class="col-md-8 d-none d-md-block">
@@ -67,14 +78,14 @@
 										<a class="nav-link" href="about.php">About Us</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link" href="category.html">Inspiration</a>
-									</li>
-									<li class="nav-item">
 										<a class="nav-link" href="./contact.php">Contact</a>
 									</li>
 								</ul>
 							</div>
 							<div class="header-buttons">
+								<a href="../backend/login/login.php" class="icon-button ">
+									<i class="icon-login"></i>
+								</a>
 								<button class="burger-menu icon-button ms-2 float-end float-lg-none">
 									<span class="burger-icon"></span>
 								</button>

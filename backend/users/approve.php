@@ -1,8 +1,8 @@
 <?php
     require '../database/db.php';
     try{
-        $sql = 'INSERT INTO userpost (blogTitle, blogCategory, blogDescription, id)
-        (SELECT blogTitle, blogCategory, blogDescription, id FROM requestpost WHERE blogID = '. $_GET['id'] .')';
+        $sql = 'INSERT INTO userpost (blogTitle, blogCategory, blogDescription, id, blogImage)
+        (SELECT blogTitle, blogCategory, blogDescription, id, blogImage FROM requestpost WHERE blogID = '. $_GET['id'] .')';
         $result = mysqli_query($db_connect, $sql);
         $delSql = 'DELETE FROM requestpost WHERE blogID = ' . $_GET['id'];
         $delResult = mysqli_query($db_connect, $delSql);

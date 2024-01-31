@@ -19,13 +19,13 @@
 </div>
 
 
-<div class="canvas-menu d-flex align-items-end flex-column open">
+<div class="canvas-menu d-flex align-items-end flex-column">
 	<!-- close button -->
 	<button type="button" class="btn-close" aria-label="Close"></button>
 
 	<!-- logo -->
 	<div class="logo">
-		<img src="images/logo.svg" alt="Katen">
+		<img src="../assets/frontend/images/logo3.jpg" alt="">
 	</div>
 
 	<!-- menu -->
