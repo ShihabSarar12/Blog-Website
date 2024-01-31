@@ -4,9 +4,9 @@
 
 	$id =  $_GET['id'];
 
-	$sql = "SELECT * FROM userpost WHERE id = $id";
+	$sql = "SELECT * FROM userpost WHERE blogID = $id";
 	$result = mysqli_query($db_connect, $sql);
-	$row = mysqli_fetch_assoc($result);
+	$blogTable = mysqli_fetch_assoc($result);
 ?>
 <!-- site wrapper -->
 <div class="site-wrapper">
@@ -16,14 +16,6 @@
 	<section class="main-content mt-3">
 		<div class="container-xl">
 
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item"><a href="#">Inspiration</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">3 Easy Ways To Make Your iPhone Faster</li>
-                </ol>
-            </nav>
-
 			<div class="row gy-4">
 
 				<div class="col-lg-8">
@@ -31,96 +23,32 @@
                     <div class="post post-single">
 						<!-- post header -->
 						<div class="post-header">
-							<h1 class="title mt-0 mb-3"><?= $row['blogTitle']?></h1>
+							<!-- Array ( [blogID] => 10 [blogTitle] => Perovskite Solar Cells: Pioneering the Green Energy Revolution [blogCategory] => popular [posted] => 2024-01-30 10:11:31 [blogDescription] =>sad [id] => 8 [blogImage] => BlogImage-8-2019878309.jpg ) 1  -->
+							<h1 class="title mt-0 mb-3"><?= $blogTable['blogTitle']?></h1>
 							<ul class="meta list-inline mb-0">
-								<li class="list-inline-item"><a href="#"><img src="images/other/author-sm.png" class="author" alt="author"/>Katen Doe</a></li>
-								<li class="list-inline-item"><a href="#">Trending</a></li>
-								<li class="list-inline-item">29 March 2021</li>
+								<?php
+									$userID = $blogTable['id'];
+									$sql = "SELECT * FROM users WHERE id = $userID";
+									$userResult = mysqli_query($db_connect, $sql);
+									$userTable = mysqli_fetch_assoc($userResult);
+								?>
+								<li class="list-inline-item"><a href="#"><img width="70px" style="border-radius: 50%;" src="../uploads/user/<?=$userTable['profile_photo']?>" class="author" alt="author"/><?=$userTable['name']?></a></li>
+								<li class="list-inline-item"><a href="#"><?=$blogTable['blogCategory']?></a></li>
+								<li class="list-inline-item"><?=$blogTable['posted']?></li>
 							</ul>
 						</div>
 						<!-- featured image -->
 						<div class="featured-image">
-							<img src="images/posts/featured-lg.jpg" alt="post-title" />
+							<img src="../uploads/blogImages/<?=$blogTable['blogImage']?>" alt="post-title" />
 						</div>
 						<!-- post content -->
 						<div class="post-content clearfix">
-							<p>The European languages are members of the same family. Their separate existence is a myth. For science, music, sport, etc, Europe uses the same <a href="#">vocabulary</a>. The languages only differ in their grammar, their pronunciation and their most common words.</p>
-
-							<p>Everyone realizes why a new common language would be desirable: one could refuse to pay expensive translators. To achieve this, it <mark>would be</mark> necessary to have uniform grammar, pronunciation and more common words.</p>
-
-							<figure class="figure">
-								<img src="images/posts/post-lg-2.jpg" class="figure-img img-fluid rounded" alt="...">
-								<figcaption class="figure-caption text-center">A caption for the above image.</figcaption>
-							</figure>
-
-							<p>The languages only differ in their grammar, their pronunciation and their most common words. Everyone realizes why a new common language would be desirable.</p> 
-							
-							<img src="images/posts/single-sm-1.jpg" class="rounded alignleft" alt="...">
-							<p>One could refuse to pay expensive translators. To achieve this, it would be necessary to have uniform grammar, pronunciation and more common words.</p>
-
-							<p>If several languages coalesce, the grammar of the resulting language is more simple and regular than that of the individual languages. The new common language will be more simple and regular than the existing <a href="#">European languages</a>. It will be as simple as Occidental; in fact, it will be Occidental.</p>
-
-							<p>A collection of textile samples lay spread out on the table - Samsa was a travelling salesman - and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame.</p>
-
-							<h4>I should be incapable of drawing a single stroke</h4>
-
-							<ul>
-								<li>How about if I sleep a little bit</li>
-								<li>A collection of textile samples lay spread out</li>
-								<li>His many legs, pitifully thin compared with</li>
-								<li>He lay on his armour-like back</li>
-								<li> Gregor Samsa woke from troubled dreams</li>
-							</ul>
-
-							<p>To an English person, it will seem like simplified <a href="#">English</a>, as a skeptical Cambridge friend of mine told me what Occidental is. The European languages are members of the same family. Their separate existence is a myth. For science, music, sport, etc, Europe uses the same vocabulary.</p>
-						</div>
-						<!-- post bottom section -->
-						<div class="post-bottom">
-							<div class="row d-flex align-items-center">
-								<div class="col-md-6 col-12 text-center text-md-start">
-									<!-- tags -->
-									<a href="#" class="tag">#Trending</a>
-									<a href="#" class="tag">#Video</a>
-									<a href="#" class="tag">#Featured</a>
-								</div>
-								<div class="col-md-6 col-12">
-									<!-- social icons -->
-									<ul class="social-icons list-unstyled list-inline mb-0 float-md-end">
-										<li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-										<li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
-										<li class="list-inline-item"><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-										<li class="list-inline-item"><a href="#"><i class="fab fa-pinterest"></i></a></li>
-										<li class="list-inline-item"><a href="#"><i class="fab fa-telegram-plane"></i></a></li>
-										<li class="list-inline-item"><a href="#"><i class="far fa-envelope"></i></a></li>
-									</ul>
-								</div>
-							</div>
+							<p>
+								<?=$blogTable['blogDescription']?>
+							</p>
 						</div>
 
                     </div>
-
-					<div class="spacer" data-height="50"></div>
-
-					<div class="about-author padding-30 rounded">
-						<div class="thumb">
-							<img src="images/other/avatar-about.png" alt="Katen Doe" />
-						</div>
-						<div class="details">
-							<h4 class="name"><a href="#">Katen Doe</a></h4>
-							<p>Hello, I’m a content writer who is fascinated by content fashion, celebrity and lifestyle. She helps clients bring the right content to the right people.</p>
-							<!-- social icons -->
-							<ul class="social-icons list-unstyled list-inline mb-0">
-								<li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-								<li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
-								<li class="list-inline-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
-								<li class="list-inline-item"><a href="#"><i class="fab fa-pinterest"></i></a></li>
-								<li class="list-inline-item"><a href="#"><i class="fab fa-medium"></i></a></li>
-								<li class="list-inline-item"><a href="#"><i class="fab fa-youtube"></i></a></li>
-							</ul>
-						</div>
-					</div>
-
-					<div class="spacer" data-height="50"></div>
 
 					
 
@@ -134,7 +62,20 @@
 						<!-- widget about -->
 					<div class="widget rounded">
 						<div class="widget-about data-bg-image text-center" data-bg-image="../assets/frontend/images/map-bg.png">
-							<img src="images/logo.svg" alt="logo" class="mb-4" />
+							
+						<div class="">
+                                <p style="
+                                        color: #203656;
+                                        font-family: 'Poppins', sans-serif;
+                                        font-weight: 700;
+                                        line-height: 1.4;
+                                ">
+                                    <a class="navbar-brand" style="font-size: 20px;" href="">
+                                        Heritage Tales.
+                                    </a>
+                                </p>
+
+                            </div>
 							<p class="mb-4">Explore software development insights. AUST students share coding experiences, tips, and innovations."</p>
 							<ul class="social-icons list-unstyled list-inline mb-0">
 								<li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>

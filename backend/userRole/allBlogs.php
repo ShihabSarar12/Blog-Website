@@ -31,43 +31,49 @@
                                         <tr>
                                             <th>Blog Title</th>
                                             <th>Blog Category</th>
-                                            <th>Blog Description</th>
+                                            <th style="width: 600px;">Blog Description</th>
                                             <th>Post time</th>
                                             <th>Name</th>
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php
-                                            //FIXME have to fetch according to user id
-                                            $email = $_SESSION['email'];
-                                            $userSql = "SELECT * FROM users WHERE email = '$email'";
-                                            $userResult = mysqli_query($db_connect, $userSql);
-                                            $user = mysqli_fetch_assoc($userResult);
-                                            $id = $user['id'];
-                                            $sql = "SELECT * FROM userpost INNER JOIN users ON userpost.id = '$id'";
+                                    <?php
+                                        $email = $_SESSION['email'];
+                                        // Fix: Add single quotes around $email in the WHERE clause
+                                        $id_query = "SELECT id FROM users WHERE email = '$email'";
+                                        $id_result = mysqli_query($db_connect, $id_query);
+
+                                        // Check if the query was successful and rows were returned
+                                        if ($id_result && mysqli_num_rows($id_result) > 0) {
+                                            $id_row = mysqli_fetch_assoc($id_result);
+                                            $id = $id_row['id'];
+
+                                            // Corrected: Join the tables using the corresponding columns
+                                            $sql = "SELECT * FROM userpost INNER JOIN users ON userpost.id = users.id WHERE userpost.id = $id";
                                             $result = mysqli_query($db_connect, $sql);
-                                            print_r($result);
-                                            if (mysqli_num_rows($result) > 0) {
+
+                                            if ($result) {
                                                 while ($post = mysqli_fetch_assoc($result)) {
-                                        ?>
-                                                    <tr>
-                                                        <td><?= $post['blogTitle'] ?></td>
-                                                        <td><?= $post['blogCategory'] ?></td>
-                                                        <td><?= $post['blogDescription'] ?></td>
-                                                        <td><?= $post['posted'] ?></td>
-                                                        <td><?= $post['name'] ?></td>
-                                                        <td>
-                                                            <span>
-                                                                <a href="./delete.php?entity=users&entityAtr=id&redirect=allUsers&id=<?=$post['id']?>" data-toggle="tooltip" data-placement="top" title="" data-original-title="Reject">
-                                                                <i class="fa fa-close color-danger"></i>
-                                                                </a>
-                                                            </span>
-                                                        </td>
-                                                    </tr>
+                                    ?>
+                                            <tr>
+                                                <td><?= $post['blogTitle'] ?></td>
+                                                <td><?= $post['blogCategory'] ?></td>
+                                                <td style="width: 600px;display: block;overflow: scroll; height: 100px"><?= $post['blogDescription'] ?></td>
+                                                <td><?= $post['posted'] ?></td>
+                                                <td><?= $post['name'] ?></td>
+                                                <td>
+                                                    <span>
+                                                        <a href="./delete.php?entity=users&entityAtr=id&redirect=allUsers&id=<?=$post['id']?>" data-toggle="tooltip" data-placement="top" title="" data-original-title="Reject">
+                                                        <i class="fa fa-close color-danger"></i>
+                                                        </a>
+                                                    </span>
+                                                </td>
+                                            </tr>
                                         <?php
                                             }
                                         }
+                                    }
                                         ?>
                                     </tbody>
                                 </table>

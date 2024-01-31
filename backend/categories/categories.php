@@ -84,11 +84,10 @@ require '../dashboard/dashboard_header.php';
                                                     <?php
                                                     $id =  $categories['id'];
                                                     $sql2 = "SELECT name FROM users where id=$id";
-                                                    echo $sql2;
-                                                    //sql query solve
-                                                    //$result = mysqli_query($db_connect, $sql2);
-                                                    //print_r($result);
+                                                    $result = mysqli_query($db_connect, $sql2);
+                                                    $row = mysqli_fetch_assoc($result);
                                                     ?>
+                                                    <?=$row['name']?>
                                                 </td>
                                             </tr>
                                     <?php

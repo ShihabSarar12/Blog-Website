@@ -7,37 +7,33 @@
         <div class="container-xl">
             <div class="post-carousel-lg">
                 <!-- post -->
-				<div class="post featured-post-xl">
-					<div class="details clearfix">
-						<a href="category.html" class="category-badge lg">Lifestyle</a>
-						<h4 class="post-title"><a href="blog-single.html">9 Most Awesome Blue Lake With Snow Mountain</a></h4>
-						<ul class="meta list-inline mb-0">
-							<li class="list-inline-item"><a href="#">Katen Doe</a></li>
-							<li class="list-inline-item">29 March 2021</li>
-						</ul>
-					</div>
-					<a href="blog-single.html">
-						<div class="thumb rounded">
-							<div class="inner data-bg-image" data-bg-image="images/posts/featured-xl-1.jpg"></div>
+				<?php
+					$sql = 'SELECT * FROM userpost INNER JOIN users
+					ON userpost.id = users.id;';
+					$result = mysqli_query($db_connect, $sql);
+					if (mysqli_num_rows($result) > 0) {
+						while ($post = mysqli_fetch_assoc($result)) {
+				?>
+
+					<div class="post featured-post-xl">
+						<div class="details clearfix">
+							<a href="category.html" class="category-badge lg"><?=$post['blogCategory']?></a>
+							<h4 class="post-title"><a href="blog-single.html"><?=$post['blogTitle']?></a></h4>
+							<ul class="meta list-inline mb-0">
+								<li class="list-inline-item"><a href="#"><?=$post['name']?></a></li>
+								<li class="list-inline-item"><?=$post['posted']?></li>
+							</ul>
 						</div>
-					</a>
-				</div>
-                <!-- post -->
-                <div class="post featured-post-xl">
-                    <div class="details clearfix">
-                        <a href="category.html" class="category-badge lg">Culture</a>
-                        <h4 class="post-title"><a href="blog-single.html">Important Thing You Need To Know About Swim</a></h4>
-                        <ul class="meta list-inline mb-0">
-                            <li class="list-inline-item"><a href="#">Katen Doe</a></li>
-                            <li class="list-inline-item">29 March 2021</li>
-                        </ul>
-                    </div>
-                    <a href="blog-single.html">
-                        <div class="thumb rounded">
-                            <div class="inner data-bg-image" data-bg-image="images/posts/featured-xl-2.jpg"></div>
-                        </div>
-                    </a>
-                </div>
+						<a href="blog-single.html">
+							<div class="thumb rounded">
+								<div class="inner data-bg-image" data-bg-image="../uploads/blogImages/<?=$post['blogImage']?>"></div>
+							</div>
+						</a>
+					</div>
+				<?php 
+						}
+					}
+				?>
             </div>
         </div>
     </section>
@@ -49,7 +45,7 @@
 			<div class="row gy-4">
 
 				<div class="col-lg-8">
-				<?php
+					<?php
 					$sql = 'SELECT * FROM userpost INNER JOIN users
 					ON userpost.id = users.id;';
 					$result = mysqli_query($db_connect, $sql);
@@ -59,7 +55,7 @@
 							<div class="post post-classic rounded bordered">
 								<div class="thumb top-rounded">
 									<a href="category.html" class="category-badge lg position-absolute"><?=$post['blogCategory']?></a>
-									<a href="blog-single.html">
+									<a href="blog-single.php?id=<?=$post['blogID']?>">
 										<div class="inner">
 											<img src="../uploads/blogImages/<?=$post['blogImage']?>" alt="post-title" />
 										</div>
@@ -70,7 +66,7 @@
 										<li class="list-inline-item"><a href="#"><img width="70px" style="border-radius: 50%;" src="../uploads/user/<?=$post['profile_photo']?>" class="author" alt="author"/><?=$post['name']?></a></li>
 										<li class="list-inline-item"><?=$post['posted']?></li>
 									</ul>
-									<h5 class="post-title mb-3 mt-3"><a href="blog-single.html"><?=$post['blogTitle']?></a></h5>
+									<h5 class="post-title mb-3 mt-3"><a href="blog-single.php?id=<?=$post['blogID']?>"><?=$post['blogTitle']?></a></h5>
 									<p class="excerpt mb-0"></p>
 								</div>
 								<div class="post-bottom clearfix d-flex align-items-center">
@@ -86,7 +82,7 @@
 										</ul>
 									</div>
 									<div class="float-end d-none d-md-block">
-										<a href="blog-single.php?id=<?=$post['id']?>" class="more-link">Continue reading<i class="icon-arrow-right"></i></a> 
+										<a href="blog-single.php?id=<?=$post['blogID']?>" class="more-link">Continue reading<i class="icon-arrow-right"></i></a> 
 									</div>
 									<div class="more-button d-block d-md-none float-end">
 										<a href="#"><span class="icon-options"></span></a>
@@ -96,17 +92,7 @@
 						<?php 
 						}
 					}
-				?>
-
-					<nav>
-						<ul class="pagination justify-content-center">
-							<li class="page-item active" aria-current="page">
-								<span class="page-link">1</span>
-							</li>
-							<li class="page-item"><a class="page-link" href="#">2</a></li>
-							<li class="page-item"><a class="page-link" href="#">3</a></li>
-						</ul>
-					</nav>
+					?>
 
 				</div>
 				<div class="col-lg-4">
@@ -116,7 +102,19 @@
 						<!-- widget about -->
 					<div class="widget rounded">
 						<div class="widget-about data-bg-image text-center" data-bg-image="../assets/frontend/images/map-bg.png">
-							<img src="images/logo.svg" alt="logo" class="mb-4" />
+						<div class="">
+                                <p style="
+                                        color: #203656;
+                                        font-family: 'Poppins', sans-serif;
+                                        font-weight: 700;
+                                        line-height: 1.4;
+                                ">
+                                    <a class="navbar-brand" style="font-size: 20px;" href="">
+                                        Heritage Tales.
+                                    </a>
+                                </p>
+
+                            </div>
 							<p class="mb-4">Explore software development insights. AUST students share coding experiences, tips, and innovations."</p>
 							<ul class="social-icons list-unstyled list-inline mb-0">
 								<li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
