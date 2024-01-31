@@ -46,6 +46,7 @@ require '../database/db.php';
 
                                         if (mysqli_num_rows($result) > 0) {
                                             while ($post = mysqli_fetch_assoc($result)) {
+                                                $_SESSION['desp'] = $post['blogDescription'];
                                         ?>
                                                 <tr>
                                                     <td><?= $post['blogID'] ?></td>
@@ -58,7 +59,7 @@ require '../database/db.php';
                                                     <td><?= $post['posted'] ?></td>
                                                     <td>
                                                         <span>
-                                                            <a href="./update.php?blogTitle=<?= urlencode($post['blogTitle']) ?>&blogCategory=<?= urlencode($post['blogCategory']) ?>&blogDescription=<?= urlencode($post['blogDescription']) ?>&id=<?= $post['blogID'] ?>" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit">
+                                                            <a href="./update.php?blogTitle=<?= urlencode($post['blogTitle']) ?>&blogCategory=<?= urlencode($post['blogCategory']) ?>&id=<?= $post['blogID'] ?>" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit">
                                                                 <i class="fa fa-pencil color-success"></i>
                                                             </a>
                                                             <!-- <a href="./update.php?

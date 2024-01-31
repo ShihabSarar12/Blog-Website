@@ -5,12 +5,20 @@ session_start();
 if(empty($_SESSION['post'])){
 	//FIXME have to make email insertion unique
 	$emailEsc = mysqli_real_escape_string($db_connect, $_POST['email']);
-	$sql = "INSERT INTO subscribers (subEmail) VALUES ('$emailEsc')";
-	$result = mysqli_query($db_connect, $sql);
-	$email = $_POST['email'];
-	smtp_mailer($email,'Confirmation for subscription', 'Hey there,<br>Thanks for Subscribing!!');
-	header('Location: http://localhost/SD_Project/frontend/index.php');
-	die();
+	$sql_check = "SELECT * FROM subscribers WHERE subEmail = '$emailEsc'";
+	$result_check = mysqli_query($db_connect, $sql_check);
+	if (mysqli_num_rows($result_check) == 0) {
+		//$emailEsc = mysqli_real_escape_string($db_connect, $_POST['email']);
+		$sql = "INSERT IGNORE INTO subscribers (subEmail) VALUES ('$emailEsc')";
+		$result = mysqli_query($db_connect, $sql);
+		$email = $_POST['email'];
+		smtp_mailer($email,'Confirmation for subscription', 'Hey there,<br>Thanks for Subscribing!!');
+		header('Location: http://localhost/SD_Project/frontend/index.php');
+		die();
+	}else{
+		header('Location: http://localhost/SD_Project/frontend/index.php');
+		die();
+	}
 }
 else {
 	$post = $_SESSION['post'];
