@@ -29,35 +29,42 @@
                                 <table class="table table-striped table-bordered zero-configuration">
                                     <thead>
                                         <tr>
-                                            <th>Sl</th>
-                                            <th>Blog Category</th>
                                             <th>Blog Title</th>
-                                            <th>Blog Image</th>
+                                            <th>Blog Category</th>
                                             <th>Blog Description</th>
                                             <th>Post time</th>
-                                            <th>Status</th>
+                                            <th>Name</th>
+                                            <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $sql = "SELECT * FROM users WHERE role = 'user'";
-                                        $result = mysqli_query($db_connect, $sql);
-
-                                        if (mysqli_num_rows($result) > 0) {
-                                            while ($user = mysqli_fetch_assoc($result)) {
+                                            //FIXME have to fetch according to user id
+                                            $email = $_SESSION['email'];
+                                            $userSql = "SELECT * FROM users WHERE email = '$email'";
+                                            $userResult = mysqli_query($db_connect, $userSql);
+                                            $user = mysqli_fetch_assoc($userResult);
+                                            $id = $user['id'];
+                                            $sql = "SELECT * FROM userpost INNER JOIN users ON userpost.id = '$id'";
+                                            $result = mysqli_query($db_connect, $sql);
+                                            print_r($result);
+                                            if (mysqli_num_rows($result) > 0) {
+                                                while ($post = mysqli_fetch_assoc($result)) {
                                         ?>
-                                                <tr>
-                                                    <td><?= $user['id'] ?></td>
-                                                    <td><?= $user['name'] ?></td>
-                                                    <td><?= $user['email'] ?></td>
-                                                    <td>
-                                                        <span>
-                                                            <a href="./delete.php?entity=users&entityAtr=id&redirect=allUsers&id=<?=$user['id']?>" data-toggle="tooltip" data-placement="top" title="" data-original-title="Reject">
-                                                            <i class="fa fa-close color-danger"></i>
-                                                            </a>
-                                                        </span>
-                                                    </td>
-                                                </tr>
+                                                    <tr>
+                                                        <td><?= $post['blogTitle'] ?></td>
+                                                        <td><?= $post['blogCategory'] ?></td>
+                                                        <td><?= $post['blogDescription'] ?></td>
+                                                        <td><?= $post['posted'] ?></td>
+                                                        <td><?= $post['name'] ?></td>
+                                                        <td>
+                                                            <span>
+                                                                <a href="./delete.php?entity=users&entityAtr=id&redirect=allUsers&id=<?=$post['id']?>" data-toggle="tooltip" data-placement="top" title="" data-original-title="Reject">
+                                                                <i class="fa fa-close color-danger"></i>
+                                                                </a>
+                                                            </span>
+                                                        </td>
+                                                    </tr>
                                         <?php
                                             }
                                         }
