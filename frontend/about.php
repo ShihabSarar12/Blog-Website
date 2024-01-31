@@ -13,7 +13,7 @@ require '../backend/database/db.php';
 
 				<div class="page-content bordered rounded padding-30">
 
-					<img src="../assets/frontend/images/other/about.jpg" alt="Katen Doe" class="rounded mb-4" />
+					<img src="../assets/frontend/images/About.jpg" alt="about" class="rounded mb-4" />
 
 					<h3>About Our Project</h3>
 					<p>Welcome to our software development blog – a culmination of creativity, passion, and hard work by the young and dynamic web developers from Ahsanullah University of Science and Technology (AUST). Our journey into the world of software development led us to create this platform, and we are excited to share our insights, experiences, and knowledge with you.</p>
@@ -58,7 +58,19 @@ require '../backend/database/db.php';
 					<!-- widget about -->
 					<div class="widget rounded">
 						<div class="widget-about data-bg-image text-center" data-bg-image="../assets/frontend/images/map-bg.png">
-							<img src="images/logo.svg" alt="logo" class="mb-4" />
+						<div class="">
+                                <p style="
+                                        color: #203656;
+                                        font-family: 'Poppins', sans-serif;
+                                        font-weight: 700;
+                                        line-height: 1.4;
+                                ">
+                                    <a class="navbar-brand" style="font-size: 20px;" href="">
+                                        Heritage Tales.
+                                    </a>
+                                </p>
+
+                            </div>
 							<p class="mb-4">Explore software development insights. AUST students share coding experiences, tips, and innovations."</p>
 							<ul class="social-icons list-unstyled list-inline mb-0">
 								<li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
