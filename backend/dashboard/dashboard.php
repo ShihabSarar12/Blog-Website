@@ -1,8 +1,5 @@
 <?php
     require 'dashboard_header.php';
-    if(empty($_SESSION["email"]) && empty($_SESSION["password"])){
-        header("Location: http://localhost/SD_Project/backend/dashboard/dashboard.php");
-    }
 ?>
  <!--**********************************
     Content body start

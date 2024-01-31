@@ -1,6 +1,9 @@
 
 <?php
     session_start();
+    if(empty($_SESSION["email"]) && empty($_SESSION["password"])){
+        header("Location: http://localhost/SD_Project/backend/login/login.php");
+    }
     include '../database/db.php';
     $email = mysqli_real_escape_string($db_connect, $_SESSION['email']);
     $sql = "select role from users where email = '$email'";

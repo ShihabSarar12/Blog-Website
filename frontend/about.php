@@ -31,7 +31,7 @@ require '../backend/database/db.php';
 					Greetings! I'm Ammam Oasifa, the creative mind behind the frontend design of our blog. I believe in the power of user-friendly interfaces and have strived to create an engaging and visually appealing experience for our visitors.
 
 					<h6>
-						Shihab Sharar <br>
+						Shihab Sarar <br>
 						Position: Backend Developer
 					</h6>
 

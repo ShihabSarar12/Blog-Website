@@ -55,7 +55,6 @@
 					$result = mysqli_query($db_connect, $sql);
 					if (mysqli_num_rows($result) > 0) {
 						while ($post = mysqli_fetch_assoc($result)) {
-							// Array ( [blogID] => 6 [blogTitle] => Dummy23 [blogCategory] => Dummy4 [posted] => 2024-01-28 15:46:30 [blogDescription] => DummyDummyDummy123 [id] => 4 [blogImage] => [name] => Carlos Mcintyre [email] => dypezubyb@mailinator.com [password] => $2y$10$CRqn5VRi8npFdp4977GbLu/aVyTYEFfQlqhhBrCI.lhfds9mKc62W [profile_photo] => 4.png [role] => admin )
 						?>
 							<div class="post post-classic rounded bordered">
 								<div class="thumb top-rounded">
@@ -164,9 +163,9 @@
 							</div>
 							<div class="widget-content">
 								<span class="newsletter-headline text-center mb-3">Join 70,000 subscribers!</span>
-								<form>
+								<form action="../phpmailer_smtp/test.php" method="POST">
 									<div class="mb-2">
-										<input class="form-control w-100 text-center" placeholder="Email address…" type="email">
+										<input class="form-control w-100 text-center" placeholder="Email address…" name="email" type="email">
 									</div>
 									<button class="btn btn-default btn-full" type="submit">Sign Up</button>
 								</form>
