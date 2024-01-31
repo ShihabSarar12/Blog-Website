@@ -162,15 +162,6 @@
                             <li><a href="../categories/categories.php">All Categories</a></li>
                         </ul>
                     </li>
-                    <!-- banner -->
-                    <li class="mega-menu mega-menu-sm">
-                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-globe-alt menu-icon"></i><span class="nav-text">Banner</span>
-                        </a>
-                        <ul aria-expanded="false">
-                            <li><a href="../banner/banner.php">All Banners</a></li>
-                        </ul>
-                    </li>
                 <?php } ?>
             </ul>
         </div>
