@@ -17,14 +17,14 @@
 
 					<div class="post featured-post-xl">
 						<div class="details clearfix">
-							<a href="category.html" class="category-badge lg"><?=$post['blogCategory']?></a>
-							<h4 class="post-title"><a href="blog-single.html"><?=$post['blogTitle']?></a></h4>
+							<a href="#" class="category-badge lg"><?=$post['blogCategory']?></a>
+							<h4 class="post-title"><a href="#"><?=$post['blogTitle']?></a></h4>
 							<ul class="meta list-inline mb-0">
 								<li class="list-inline-item"><a href="#"><?=$post['name']?></a></li>
 								<li class="list-inline-item"><?=$post['posted']?></li>
 							</ul>
 						</div>
-						<a href="blog-single.html">
+						<a href="#">
 							<div class="thumb rounded">
 								<div class="inner data-bg-image" data-bg-image="../uploads/blogImages/<?=$post['blogImage']?>"></div>
 							</div>
@@ -54,7 +54,7 @@
 						?>
 							<div class="post post-classic rounded bordered">
 								<div class="thumb top-rounded">
-									<a href="category.html" class="category-badge lg position-absolute"><?=$post['blogCategory']?></a>
+									<a href="#" class="category-badge lg position-absolute"><?=$post['blogCategory']?></a>
 									<a href="blog-single.php?id=<?=$post['blogID']?>">
 										<div class="inner">
 											<img src="../uploads/blogImages/<?=$post['blogImage']?>" alt="post-title" />

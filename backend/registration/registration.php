@@ -46,14 +46,26 @@
 
                                     <div class="form-group">
                                         <input type="text" class="form-control"  placeholder="Name" id="name" name="name" required>
+                                        <?php if (isset($_SESSION['name_error'])) { ?>
+                                            <div class="alert alert-warning"><?= $_SESSION['name_error'] ?></div>
+                                        <?php } unset($_SESSION['name_error']);?>
                                     </div>
 
                                     <div class="form-group">
                                         <input type="email" class="form-control"  placeholder="Email" id="email" name="email" required>
+                                        <?php if (isset($_SESSION['invalid_email'])) { ?>
+                                            <div class="alert alert-warning"><?= $_SESSION['invalid_email'] ?></div>
+                                        <?php } unset($_SESSION['invalid_email']);?>
                                     </div>
 
                                     <div class="form-group">
                                         <input type="password" class="form-control" placeholder="Password" id="password" name="password" required>
+                                        <?php if (isset($_SESSION['pass_not_match'])) { ?>
+                                            <div class="alert alert-warning"><?= $_SESSION['pass_not_match']; ?></div>
+                                        <?php } unset($_SESSION['pass_not_match']);?>
+                                        <?php if (isset($_SESSION['pass_not_valid'])) { ?>
+                                            <div class="alert alert-warning"><?= $_SESSION['pass_not_valid']; ?></div>
+                                        <?php } unset($_SESSION['pass_not_valid']);?>
                                     </div>
 
                                     <div class="form-group">
@@ -64,6 +76,12 @@
                                         <label for="" class="form-label">Upload Your Profile Photo</label>
                                         <input type="file" class="form-control" name="profile_photo" 
                                             onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])">
+                                        <?php if (isset($_SESSION['size'])) { ?>
+                                            <div class="alert alert-warning"><?= $_SESSION['size']; ?></div>
+                                        <?php } unset($_SESSION['size']);?>
+                                        <?php if (isset($_SESSION['extension'])) { ?>
+                                            <div class="alert alert-warning"><?= $_SESSION['size']; ?></div>
+                                        <?php } unset($_SESSION['extension']);?>
                                         <br>
                                         <img src="" width="200" id="blah" alt="">
                                     </div>

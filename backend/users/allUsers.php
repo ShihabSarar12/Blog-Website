@@ -42,18 +42,18 @@
                                         if (mysqli_num_rows($result) > 0) {
                                             while ($user = mysqli_fetch_assoc($result)) {
                                         ?>
-                                                <tr>
-                                                    <td><?= $user['id'] ?></td>
-                                                    <td><?= $user['name'] ?></td>
-                                                    <td><?= $user['email'] ?></td>
-                                                    <td>
-                                                        <span>
-                                                            <a href="./delete.php?entity=users&entityAtr=id&redirect=allUsers&id=<?=$user['id']?>" data-toggle="tooltip" data-placement="top" title="" data-original-title="Reject">
-                                                            <i class="fa fa-close color-danger"></i>
-                                                            </a>
-                                                        </span>
-                                                    </td>
-                                                </tr>
+                                            <tr>
+                                                <td><?= $user['id'] ?></td>
+                                                <td><?= $user['name'] ?></td>
+                                                <td><?= $user['email'] ?></td>
+                                                <td>
+                                                    <span>
+                                                        <a href="./delete.php?entity=users&entityAtr=id&redirect=allUsers&id=<?=$user['id']?>" data-toggle="tooltip" data-placement="top" title="" data-original-title="Reject">
+                                                        <i class="fa fa-close color-danger"></i>
+                                                        </a>
+                                                    </span>
+                                                </td>
+                                            </tr>
                                         <?php
                                             }
                                         }
